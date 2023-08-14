@@ -73,7 +73,8 @@ function App() {
     apiAuth
       .login(loginData)
       .then((res) => {
-        if (res && res.token) {
+        // console.log(loginData)
+        if (res) {
           setCurrentUser({ ...currentUser, email: loginData.email });
           localStorage.setItem('jwt', res.token);
           setLoggedIn(true);
@@ -113,7 +114,8 @@ function App() {
       apiAuth
         .checkToken(token)
         .then((res) => {
-          if (res && res.data) {
+          console.log(res)
+          if (res) {
             setLoggedIn(true);
             setCurrentUser({
               ...currentUser,
@@ -123,6 +125,7 @@ function App() {
           }
         })
         .catch((err) => {
+          setLoggedIn(false);
           console.log(err);
           openInfoTooltipPopup(false);
         });
@@ -180,7 +183,7 @@ function App() {
 
   // update user
   function handleUpdateUser(data) {
-     const token = localStorage.getItem('jwt');
+    const token = localStorage.getItem('jwt');
     api
       .editUserInfo(data, token)
       .then((userDataServer) => {
@@ -192,7 +195,7 @@ function App() {
 
   // update avatar
   function handleUpdateAvatar(data) {
-     const token = localStorage.getItem('jwt');
+    const token = localStorage.getItem('jwt');
     api
       .patchAvatarInfo(data, token)
       .then((userDataServer) => {
