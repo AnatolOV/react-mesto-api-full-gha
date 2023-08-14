@@ -117,7 +117,7 @@ function App() {
             setLoggedIn(true);
             setCurrentUser({
               ...currentUser,
-              email: res.data.email,
+              email: res.email,
             });
             navigate('/');
           }
@@ -182,7 +182,7 @@ function App() {
   function handleUpdateUser(data) {
      const token = localStorage.getItem('jwt');
     api
-      .editUserInfo({data,token})
+      .editUserInfo(data, token)
       .then((userDataServer) => {
         setCurrentUser({ ...currentUser, ...userDataServer });
         closeAllPopups();
@@ -194,7 +194,7 @@ function App() {
   function handleUpdateAvatar(data) {
      const token = localStorage.getItem('jwt');
     api
-      .patchAvatarInfo({ data, token })
+      .patchAvatarInfo(data, token)
       .then((userDataServer) => {
         setCurrentUser({ ...currentUser, ...userDataServer });
         closeAllPopups();

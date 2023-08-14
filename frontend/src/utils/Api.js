@@ -53,7 +53,7 @@ class Api {
     }).then((res) => this._checkError(res));
   }
   //метод для изменения данных с сервера
-  editUserInfo({data,token}) {
+  editUserInfo(data, token) {
     // console.log(data)
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
