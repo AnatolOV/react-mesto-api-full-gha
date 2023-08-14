@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP 158.160.30.12
+IP 51.250.103.234
 
 Frontend https://oleinikov.nomoreparties.co
 
