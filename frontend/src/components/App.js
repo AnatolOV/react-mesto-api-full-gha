@@ -91,7 +91,7 @@ function App() {
     apiAuth
       .register(regData)
       .then((res) => {
-        if (res && res.data) {
+        if (res) {
           openInfoTooltipPopup(true);
           navigate('/sign-in');
         }
